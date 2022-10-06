@@ -12,7 +12,7 @@ class Pokemon extends Controller
         if ($request->exists('pokemon'))
             $pokemon = $request->input('pokemon');
         else
-            $pokemon = rand(1, 905);
+            $pokemon = 'kadabra'; //rand(1, 905);
 
         $api = curl_init("https://pokeapi.co/api/v2/pokemon/$pokemon"); //Transferencia de Archivos
         curl_setopt($api, CURLOPT_RETURNTRANSFER, true); //Obtiene Info

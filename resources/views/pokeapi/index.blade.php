@@ -16,7 +16,7 @@
                 @if(isset($foto))
                 <img class="card-img-top" src="{{ $foto }}" alt="Card image cap">
                 @else
-                    <p></p>
+                <p></p>
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">Nombre: <strong>{{ $name }}</strong></h5>
