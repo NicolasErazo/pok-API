@@ -15,7 +15,13 @@
             </div>
             <br>
             <div class="card" style="width: 18rem;">
+                @if(isset($foto))
                 <img class="card-img-top" src="{{ $foto }}" alt="Card image cap">
+                @else
+                <div class="col">
+                    <p></p>
+                </div>
+                @endif
                 <div class="card-body">
                     <h5 class="card-title">Nombre: <strong>{{ $name }}</strong></h5>
                     <form action="/home/details" method="POST">
