@@ -7,12 +7,10 @@ use Illuminate\Http\Request;
 class Pokemon extends Controller
 {
     //
-    public function index(Request $request)
+    public function buscar(Request $request)
     {
         if ($request->exists('pokemon'))
             $pokemon = $request->input('pokemon');
-        else
-            $pokemon = rand(0, 905);
 
         $api = curl_init("https://pokeapi.co/api/v2/pokemon/$pokemon"); //Transferencia de Archivos
         curl_setopt($api, CURLOPT_RETURNTRANSFER, true); //Obtiene Info
@@ -23,10 +21,10 @@ class Pokemon extends Controller
         $name = $json->name;
         $foto = $json->sprites->front_default;
 
-        return view('pokeapi.index', compact('name', 'foto'));
+        return view('pokeapi.buscado', compact('name', 'foto'));
     }
 
-    public function list(Request $request)
+    public function listar(Request $request)
     {
 
         if ($request->exists('limit')) {
@@ -38,18 +36,18 @@ class Pokemon extends Controller
         $pokemones = array();
         for ($i = $limit - 9; $i <= $limit; $i++) {
 
-            $api = curl_init("https://pokeapi.co/api/v2/pokemon/$i"); //Transferencia de Archivos
-            curl_setopt($api, CURLOPT_RETURNTRANSFER, true); //Obtiene Info
-            $response = curl_exec($api); //Ejecución
-            curl_close($api); //Cierra y libera recursos
-            $pokemon = json_decode($response); //Codificacion en Json
+            $api = curl_init("https://pokeapi.co/api/v2/pokemon/$i");
+            curl_setopt($api, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($api);
+            curl_close($api);
+            $pokemon = json_decode($response);
             array_push($pokemones, $pokemon);
         };
 
         return view('pokeapi.lista', compact('pokemones'));
     }
 
-    public function details(Request $request)
+    public function detallar(Request $request)
     {
         if ($request->exists('pokemon'))
             $pokemon = $request->input('pokemon');
@@ -70,6 +68,6 @@ class Pokemon extends Controller
         $foto = $json->sprites->front_default;
         $foto2 = $json->sprites->back_default;
 
-        return view('pokeapi.details', compact('name', 'id', 'abilities', 'type', 'foto', 'foto2'));
+        return view('pokeapi.detalles', compact('name', 'id', 'abilities', 'type', 'foto', 'foto2'));
     }
 }

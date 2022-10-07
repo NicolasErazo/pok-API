@@ -20,10 +20,9 @@ Route::get('/', function () {
    
 Auth::routes(['reset'=>false]);
 
-Route::get('/home', [Pokemon::class, 'index'])->middleware('auth'); 
-Route::post('/home/pokemon', [Pokemon::class, 'index'])->middleware('auth');
+Route::get('/home', [Pokemon::class, 'listar'])->middleware('auth'); 
+Route::post('/home', [Pokemon::class, 'listar'])->middleware('auth'); 
 
-Route::get('/home', [Pokemon::class, 'list'])->middleware('auth'); 
-Route::post('/home', [Pokemon::class, 'list'])->middleware('auth'); 
+Route::post('/home/pokemon', [Pokemon::class, 'buscar'])->middleware('auth');
 
-Route::post('/home/details', [Pokemon::class, 'details'])->middleware('auth'); 
+Route::post('/home/details', [Pokemon::class, 'detallar'])->middleware('auth'); 

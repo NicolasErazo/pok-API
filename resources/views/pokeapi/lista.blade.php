@@ -84,6 +84,30 @@
                 </ul>
             </nav>
         </form>
+        <form action="/home" method="POST">
+            @csrf
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><input name="limit" type="number" value="80" hidden><button class="page-link">8</button></li>
+                </ul>
+            </nav>
+        </form>
+        <form action="/home" method="POST">
+            @csrf
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><input name="limit" type="number" value="90" hidden><button class="page-link">9</button></li>
+                </ul>
+            </nav>
+        </form>
+        <form action="/home" method="POST">
+            @csrf
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><input name="limit" type="number" value="100" hidden><button class="page-link">10</button></li>
+                </ul>
+            </nav>
+        </form>
         </div>
     </div>
 </div>
