@@ -36,6 +36,14 @@
     </div>
     <div class="col-md-12 text-center mt-2">
     <div class="d-flex justify-content-center">
+    <form action="/home" method="POST">
+            @csrf
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><input name="limit" type="number" value="10" hidden><button class="page-link">1</button></li>
+                </ul>
+            </nav>
+        </form>
         <form action="/home" method="POST">
             @csrf
             <nav aria-label="Page navigation example">
