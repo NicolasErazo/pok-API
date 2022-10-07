@@ -2,19 +2,13 @@
 
 @section('content')
 
+
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12 text-center">
-            <form action="/home" method="POST" class="d-flex">
-                @csrf
-                <input type="text" class="form-control me-2" name="pokemon" placeholder="Ingrese Id o nombre de Pokemon a buscar...">
-                <button type="submit" class="btn btn-success">Buscar</button>
-            </form>
-            <div class="row mt-2">
-                <h6><strong> Observaciones: </strong> Solamente se puede buscar por ID menor que 905 y nombre exacto de pokemon</h6>
-            </div>
+    <div class="row">
+        <h1 class="text-center">Tu Pokemon</h1>
+        <div class="col d-flex justify-content-center text-center">
             <br>
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 22rem;">
                 @if(isset($foto))
                 <img class="card-img-top" src="{{ $foto }}" alt="Card image cap">
                 @else

@@ -12,7 +12,7 @@ class Pokemon extends Controller
         if ($request->exists('pokemon'))
             $pokemon = $request->input('pokemon');
         else
-            $pokemon = rand(0, 905); //rand(1, 905);
+            $pokemon = rand(0, 905);
 
         $api = curl_init("https://pokeapi.co/api/v2/pokemon/$pokemon"); //Transferencia de Archivos
         curl_setopt($api, CURLOPT_RETURNTRANSFER, true); //Obtiene Info
@@ -24,6 +24,29 @@ class Pokemon extends Controller
         $foto = $json->sprites->front_default;
 
         return view('pokeapi.index', compact('name', 'foto'));
+    }
+
+    public function list(Request $request)
+    {
+
+        if ($request->exists('limit')) {
+            $limit = $request->input('limit');
+        } else {
+            $limit = 10;
+        }
+
+        $pokemones = array();
+        for ($i = $limit - 9; $i <= $limit; $i++) {
+
+            $api = curl_init("https://pokeapi.co/api/v2/pokemon/$i"); //Transferencia de Archivos
+            curl_setopt($api, CURLOPT_RETURNTRANSFER, true); //Obtiene Info
+            $response = curl_exec($api); //Ejecución
+            curl_close($api); //Cierra y libera recursos
+            $pokemon = json_decode($response); //Codificacion en Json
+            array_push($pokemones, $pokemon);
+        };
+
+        return view('pokeapi.lista', compact('pokemones'));
     }
 
     public function details(Request $request)

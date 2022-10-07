@@ -3,6 +3,8 @@
 @section('content')
 
 <div class="container">
+    <a href="/home" class="btn btn-primary mt-2">volver</a>
+    <h1 class="text-center">Detalles de {{ $name }}</h1>
     <div class="row">
         <div class="col d-flex justify-content-center text-center">
             <br>
@@ -33,7 +35,7 @@
                     <h4 class="card-text">Id: <strong>{{ $id }}</strong></h4>
                     <h4 class="card-text">Habilidades: <strong>{{ $abilities }}</strong></h4>
                     <h4 class="card-text">Tipo: <strong>{{ $type }}</strong></h4>
-                    <a href="/home" class="btn btn-primary mt-2">volver</a>
+
                 </div>
             </div>
         </div>
